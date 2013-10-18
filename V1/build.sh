@@ -4,6 +4,6 @@ cd ../linux-3.10.16
 #make mrproper ARCH=i386
 #make allnoconfig ARCH=i386
 cp ../V1/.config .
-make -j3 ARCH=i386
+make ARCH=i386
 cd ../V1
-qemu -kernel ../linux-3.10.16/arch/x86/boot/bzImage -append "root=/dev/ram init=/init"
+qemu -curses -kernel ../linux-3.10.16/arch/x86/boot/bzImage -append "root=/dev/ram init=/init"
