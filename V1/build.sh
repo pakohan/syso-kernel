@@ -1,10 +1,9 @@
 #!/bin/bash
-cd /Users/mogli/Code/SySo/V1
 rm -rf rootfs
 rm init
 rm ramdisk.img
-#rm -rf linux-3.11.4
-#tar xJf linux-3.11.4.tar.xz
+#rm -rf linux-3.10.16
+#tar xJf linux-3.10.16.tar.xz
 cd ../linux-3.10.16
 make mrproper ARCH=i386
 make allnoconfig ARCH=i386
@@ -22,4 +21,4 @@ sudo mkdir rootfs/dev
 sudo mknod rootfs/dev/console c 5 1
 sudo mknod rootfs/dev/ram b 1 0
 sudo umount rootfs
-qemu -kernel linux-3.11.4/arch/x86/boot/bzImage  -initrd ramdisk.img  -append "root=/dev/ram init=/init"
+qemu -kernel linux-3.10.16/arch/x86/boot/bzImage  -initrd ramdisk.img  -append "root=/dev/ram init=/init"
