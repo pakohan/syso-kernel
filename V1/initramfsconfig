@@ -1,3 +1,67 @@
-file /init usr/init 500 0 0
-dir /dev 755 0 0
+
+#####################
+# usr/initramfs/
+# Last modified: 1382134193.4335324620
+
+dir /dev 755 1000 1000
+dir /bin 755 1000 1000
+dir /etc 755 1000 1000
+dir /usr 755 1000 1000
+dir /usr/bin 755 1000 1000
+dir /usr/sbin 755 1000 1000
+dir /sbin 755 1000 1000
 nod /dev/console 644 0 0 c 5 1
+nod /dev/tty1 644 0 0 c 4 2
+nod /dev/tty2 644 0 0 c 4 3
+nod /dev/tty3 644 0 0 c 4 4
+nod /dev/tty4 644 0 0 c 4 5
+nod /dev/tty5 644 0 0 c 4 6
+file /bin/busybox usr/initramfs/bin/busybox 755 1000 1000
+file /etc/inittab usr/initramfs/etc/inittab 644 1000 1000
+file /bin/hello usr/initramfs/bin/hello 755 1000 1000
+slink /linuxrc bin/busybox 777 1000 1000
+slink /bin/chmod busybox 777 1000 1000
+slink /bin/egrep busybox 777 1000 1000
+slink /bin/chown busybox 777 1000 1000
+slink /bin/cat busybox 777 1000 1000
+slink /bin/grep busybox 777 1000 1000
+slink /bin/dd busybox 777 1000 1000
+slink /bin/fgrep busybox 777 1000 1000
+slink /bin/uname busybox 777 1000 1000
+slink /bin/mknod busybox 777 1000 1000
+slink /bin/ls busybox 777 1000 1000
+slink /bin/dmesg busybox 777 1000 1000
+slink /bin/ln busybox 777 1000 1000
+slink /bin/mount busybox 777 1000 1000
+slink /bin/cp busybox 777 1000 1000
+slink /bin/echo busybox 777 1000 1000
+slink /bin/df busybox 777 1000 1000
+slink /bin/mv busybox 777 1000 1000
+slink /bin/ps busybox 777 1000 1000
+slink /bin/umount busybox 777 1000 1000
+slink /bin/rm busybox 777 1000 1000
+slink /bin/pwd busybox 777 1000 1000
+slink /bin/date busybox 777 1000 1000
+slink /bin/touch busybox 777 1000 1000
+slink /bin/vi busybox 777 1000 1000
+slink /bin/kill busybox 777 1000 1000
+slink /usr/bin/[ ../../bin/busybox 777 1000 1000
+slink /usr/bin/uptime ../../bin/busybox 777 1000 1000
+slink /usr/bin/tail ../../bin/busybox 777 1000 1000
+slink /usr/bin/top ../../bin/busybox 777 1000 1000
+slink /usr/bin/test ../../bin/busybox 777 1000 1000
+slink /usr/bin/env ../../bin/busybox 777 1000 1000
+slink /usr/bin/head ../../bin/busybox 777 1000 1000
+slink /usr/bin/whoami ../../bin/busybox 777 1000 1000
+slink /usr/bin/less ../../bin/busybox 777 1000 1000
+slink /usr/bin/basename ../../bin/busybox 777 1000 1000
+slink /usr/bin/free ../../bin/busybox 777 1000 1000
+slink /usr/bin/pkill ../../bin/busybox 777 1000 1000
+slink /usr/bin/clear ../../bin/busybox 777 1000 1000
+slink /usr/bin/killall ../../bin/busybox 777 1000 1000
+slink /usr/bin/[[ ../../bin/busybox 777 1000 1000
+slink /usr/sbin/killall5 ../../bin/busybox 777 1000 1000
+slink /sbin/init ../bin/busybox 777 1000 1000
+slink /sbin/poweroff ../bin/busybox 777 1000 1000
+slink /sbin/reboot ../bin/busybox 777 1000 1000
+slink /sbin/halt ../bin/busybox 777 1000 1000
