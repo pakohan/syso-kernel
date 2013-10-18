@@ -4,6 +4,7 @@ mkdir ../linux-3.10.16/usr/initramfs
 mkdir ../linux-3.10.16/usr/initramfs/bin
 mkdir ../linux-3.10.16/usr/initramfs/etc
 mkdir ../linux-3.10.16/usr/initramfs/dev
+mkdir ../linux-3.10.16/usr/initramfs/proc
 
 cp inittab ../linux-3.10.16/usr/initramfs/etc
 
@@ -21,6 +22,4 @@ sh scripts/gen_initramfs_list.sh usr/initramfs/ > ../V1/initramfsconfig
 cat ../V1/initramfsconfig_nodes >> ../V1/initramfsconfig
 
 cp ../V1/config-linux .config
-make ARCH=i386
-cd ../V1
-qemu -curses -kernel ../linux-3.10.16/arch/x86/boot/bzImage -append "root=/dev/ram init=/sbin/init"
+make ARCH=i386 && cd ../V1 && qemu -curses -kernel ../linux-3.10.16/arch/x86/boot/bzImage -append "root=/dev/ram init=/init"

@@ -9,6 +9,11 @@
 #
 # Normal rules
 #
+
+linux-3.10.16/usr/initramfs/
+busybox-1.21.1/busybox.links
+V1/initramfsconfig
+
 *.o
 *.o.*
 *.a
@@ -31,8 +36,6 @@ modules.builtin
 *.lzo
 *.patch
 *.gcno
-linux-3.10.16/usr/initramfs/
-busybox-1.21.1/busybox.links
 #
 # Top-level generic files
 #
