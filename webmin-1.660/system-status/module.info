@@ -1,0 +1,10 @@
+desc_ca=Estat del Sistema
+version=1.660
+longdesc=Background system status collection libraries
+desc=System Status
+hidden=1
+category=system
+depends=proc cron 1.660
+desc_hu=Rendszer·llapot
+desc_hu.UTF-8=Rendszer√°llapot
+desc_ca.UTF-8=Estat del Sistema
