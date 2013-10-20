@@ -13,6 +13,7 @@
 linux-3.10.16/usr/initramfs/
 busybox-1.21.1/busybox.links
 V1/initramfsconfig
+linux-3.10.16/initramfsconfig
 
 *.o
 *.o.*
