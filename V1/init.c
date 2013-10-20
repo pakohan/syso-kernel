@@ -19,11 +19,6 @@ int  main(void)
         }
     }
 
-
-    while(1){
-        printf("hello, User Tobi\n");
-        usleep(1000000);
-    }
     return 0;
 }
 
