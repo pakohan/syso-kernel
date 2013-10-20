@@ -18,6 +18,7 @@ cp initramfs/etc/init.d/rcS ../linux-3.10.16/usr/files/
 
 cp initramfs-homer ../linux-3.10.16/initramfsconfig
 
+cd ../linux-3.10.16/
 cp ../V1/config-linux .config
 make ARCH=i386
 cd ../V1
