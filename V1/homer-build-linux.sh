@@ -20,6 +20,6 @@ cp initramfs-homer ../linux-3.10.16/initramfsconfig
 
 cd ../linux-3.10.16/
 cp ../V1/config-linux .config
-make ARCH=i386
+make -j 12 ARCH=i386
 cd ../V1
 qemu -kernel ../linux-3.10.16/arch/x86/boot/bzImage -append "root=/dev/ram init=/init" -curses #-qmp tcp:localhost:4444,server,nowait
