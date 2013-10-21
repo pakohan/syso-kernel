@@ -1,7 +1,6 @@
 ::sysinit:/bin/mount -t proc proc /proc
 ::sysinit:/bin/mount -t sysfs none /sys
 ::sysinit:/bin/mount -t tmpfs none /tmp
-::sysinit:/bin/mount -t tmpfs none /tmp
 #::sysinit:/bin/mount -t devtmpfs none /dev
 ::sysinit:/bin/ash /etc/init.d/rcS
 ::respawn:-/bin/ash
