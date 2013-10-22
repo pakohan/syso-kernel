@@ -10,11 +10,11 @@ dir /usr 755 1000 1000
 dir /usr/bin 755 1000 1000
 dir /usr/sbin 755 1000 1000
 dir /var 755 1000 1000
-file /.profile usr/files/.profile 644 1000 1000
-file /bin/busybox usr/files/busybox 755 1000 1000
-file /bin/hello usr/files/hello 755 1000 1000
-file /etc/init.d/rcS usr/files/rcS 755 1000 1000
-file /etc/inittab usr/files/inittab 644 1000 1000
+file /.profile usr/initramfs/.profile 644 1000 1000
+file /bin/busybox usr/initramfs/bin/busybox 755 1000 1000
+file /bin/hello usr/initramfs/bin/hello 755 1000 1000
+file /etc/init.d/rcS usr/initramfs/etc/init.d/rcS 755 1000 1000
+file /etc/inittab usr/initramfs/etc/inittab 644 1000 1000
 nod /dev/console 644 0 0 c 5 1
 slink /bin/ash busybox 777 1000 1000
 slink /bin/bash busybox 777 1000 1000

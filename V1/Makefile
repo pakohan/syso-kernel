@@ -28,10 +28,11 @@ config-busybox:
 	cp ../busybox-1.21.1/.config ../V1/config-busybox
 
 ${TARGET}: ${ROOTFS} ${BUSYBOX} ${USERPROG} ${LINUX_CONFIG}
+ifdef HOMER
+	cp initramfs-homer ../linux-3.10.16/initramfsconfig
+else
 	sh ../linux-3.10.16/scripts/gen_initramfs_list.sh ../linux-3.10.16/usr/initramfs/ > ../linux-3.10.16/initramfsconfig
 	cat initramfsconfig_nodes >> ../linux-3.10.16/initramfsconfig
-ifdef HOMER
-	cat homer2 >> ../linux-3.10.16/initramfsconfig
 endif
 	make -j ${JOBS} -C ../linux-3.10.16 ARCH=${ARCH}
 
