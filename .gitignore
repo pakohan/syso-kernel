@@ -16,6 +16,8 @@ V1/initramfsconfig
 linux-3.10.16/initramfsconfig
 linux-3.10.16/usr/files/
 
+server.host
+
 *.o
 *.o.*
 *.a
