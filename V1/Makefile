@@ -27,7 +27,7 @@ config-busybox:
 	make -C ../busybox-1.21.1 menuconfig
 	cp ../busybox-1.21.1/.config ../V1/config-busybox
 
-${TARGET}: ${ROOTFS} ${BUSYBOX} ${USERPROG} ${LINUX_CONFIG}
+${TARGET}: ${ROOTFS} ${USERPROG} ${LINUX_CONFIG} ##${BUSYBOX} 
 ifdef HOMER
 	cp initramfs-homer ../linux-3.10.16/initramfsconfig
 else
@@ -37,7 +37,7 @@ endif
 	make -j ${JOBS} -C ../linux-3.10.16 ARCH=${ARCH}
 
 ${ROOTFS}:
-	cp -R initramfs ../linux-3.10.16/usr
+	cp -R ../V1/initramfs ../linux-3.10.16/usr
 
 ${BUSYBOX}: ${ROOTFS} ${BUSYBOX_CONFIG}
 ifdef HOMER
@@ -50,6 +50,7 @@ endif
 
 
 ${USERPROG}: ${ROOTFS} init.c
+	mkdir -p ${ROOTFS}/bin/
 	gcc -static ${EXTRA_CFLAGS} init.c -o $@
 
 ${BUSYBOX_CONFIG}:
