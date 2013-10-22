@@ -1,16 +1,17 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Buildroot 2013.08.1 Configuration
+# Buildroot 2013.08.1-ge8b52c9-dirty Configuration
 #
 BR2_HAVE_DOT_CONFIG=y
+BR2_SOFT_FLOAT=y
 # BR2_arcle is not set
 # BR2_arceb is not set
-# BR2_arm is not set
+BR2_arm=y
 # BR2_armeb is not set
 # BR2_aarch64 is not set
 # BR2_avr32 is not set
 # BR2_bfin is not set
-BR2_i386=y
+# BR2_i386 is not set
 # BR2_microblazeel is not set
 # BR2_microblazebe is not set
 # BR2_mips is not set
@@ -23,37 +24,48 @@ BR2_i386=y
 # BR2_sparc is not set
 # BR2_x86_64 is not set
 # BR2_xtensa is not set
-BR2_ARCH="i386"
+BR2_ARCH="arm"
 BR2_ENDIAN="LITTLE"
-BR2_GCC_TARGET_TUNE="i386"
-BR2_GCC_TARGET_ARCH="i386"
-# BR2_x86_generic is not set
-BR2_x86_i386=y
-# BR2_x86_i486 is not set
-# BR2_x86_i586 is not set
-# BR2_x86_i686 is not set
-# BR2_x86_pentiumpro is not set
-# BR2_x86_pentium_mmx is not set
-# BR2_x86_pentium_m is not set
-# BR2_x86_pentium2 is not set
-# BR2_x86_pentium3 is not set
-# BR2_x86_pentium4 is not set
-# BR2_x86_prescott is not set
-# BR2_x86_nocona is not set
-# BR2_x86_core2 is not set
-# BR2_x86_atom is not set
-# BR2_x86_k6 is not set
-# BR2_x86_k6_2 is not set
-# BR2_x86_athlon is not set
-# BR2_x86_athlon_4 is not set
-# BR2_x86_opteron is not set
-# BR2_x86_opteron_sse3 is not set
-# BR2_x86_barcelona is not set
-# BR2_x86_geode is not set
-# BR2_x86_c3 is not set
-# BR2_x86_c32 is not set
-# BR2_x86_winchip_c6 is not set
-# BR2_x86_winchip2 is not set
+BR2_GCC_TARGET_TUNE="cortex-a9"
+BR2_GCC_TARGET_ARCH="armv7-a"
+BR2_GCC_TARGET_ABI="aapcs-linux"
+BR2_GCC_TARGET_FLOAT_ABI="soft"
+BR2_GCC_TARGET_MODE="arm"
+BR2_ARM_CPU_MAYBE_HAS_NEON=y
+BR2_ARM_CPU_MAYBE_HAS_VFPV2=y
+BR2_ARM_CPU_MAYBE_HAS_VFPV3=y
+BR2_ARM_CPU_HAS_THUMB2=y
+# BR2_arm7tdmi is not set
+# BR2_arm720t is not set
+# BR2_arm920t is not set
+# BR2_arm922t is not set
+# BR2_arm926t is not set
+# BR2_arm10t is not set
+# BR2_arm1136jf_s_r0 is not set
+# BR2_arm1136jf_s_r1 is not set
+# BR2_arm1176jz_s is not set
+# BR2_arm1176jzf_s is not set
+# BR2_cortex_a5 is not set
+# BR2_cortex_a7 is not set
+# BR2_cortex_a8 is not set
+BR2_cortex_a9=y
+# BR2_cortex_a15 is not set
+# BR2_fa526 is not set
+# BR2_pj4 is not set
+# BR2_strongarm is not set
+# BR2_xscale is not set
+# BR2_iwmmxt is not set
+# BR2_arm1136jf_s is not set
+BR2_ARM_EABI=y
+# BR2_ARM_EABIHF is not set
+# BR2_ARM_ENABLE_NEON is not set
+BR2_ARM_SOFT_FLOAT=y
+# BR2_ARM_FPU_VFPV2 is not set
+# BR2_ARM_FPU_VFPV3 is not set
+# BR2_ARM_FPU_VFPV3D16 is not set
+BR2_ARM_INSTRUCTIONS_ARM_CHOICE=y
+# BR2_ARM_INSTRUCTIONS_THUMB2 is not set
+BR2_ARM_INSTRUCTIONS_ARM=y
 
 #
 # Build options
@@ -84,7 +96,7 @@ BR2_HOST_DIR="$(BASE_DIR)/host"
 BR2_PRIMARY_SITE=""
 BR2_BACKUP_SITE="http://sources.buildroot.net/"
 BR2_KERNEL_MIRROR="http://www.kernel.org/pub/"
-BR2_GNU_MIRROR="http://ftp.gnu.org/pub/gnu"
+BR2_GNU_MIRROR="http://ftp.halifax.rwth-aachen.de/gnu/"
 BR2_DEBIAN_MIRROR="http://ftp.debian.org"
 BR2_JLEVEL=0
 BR2_CCACHE=y
@@ -143,11 +155,13 @@ BR2_UCLIBC_CONFIG="package/uclibc/uClibc-0.9.33.config"
 # BR2_PTHREADS_NONE is not set
 # BR2_PTHREADS is not set
 BR2_PTHREADS_OLD=y
+# BR2_PTHREADS_NATIVE is not set
 # BR2_PTHREAD_DEBUG is not set
 # BR2_UCLIBC_INSTALL_UTILS is not set
 # BR2_UCLIBC_INSTALL_TEST_SUITE is not set
-BR2_UCLIBC_TARGET_ARCH="i386"
-BR2_UCLIBC_X86_TYPE="386"
+BR2_UCLIBC_TARGET_ARCH="arm"
+BR2_UCLIBC_ARM_TYPE="ARM_CORTEXA9"
+BR2_UCLIBC_ARM_BX=y
 
 #
 # Binutils Options
@@ -165,7 +179,6 @@ BR2_BINUTILS_EXTRA_CONFIG_OPTIONS=""
 # GCC Options
 #
 BR2_GCC_NEEDS_MPC=y
-# BR2_GCC_VERSION_4_3_X is not set
 # BR2_GCC_VERSION_4_4_X is not set
 # BR2_GCC_VERSION_4_5_X is not set
 # BR2_GCC_VERSION_4_6_X is not set
@@ -194,6 +207,7 @@ BR2_TARGET_LDFLAGS=""
 #
 # BR2_TOOLCHAIN_BUILDROOT_CXX is not set
 # BR2_TOOLCHAIN_BUILDROOT_USE_SSP is not set
+# BR2_PACKAGE_HOST_ELF2FLT is not set
 
 #
 # System configuration
@@ -465,7 +479,6 @@ BR2_PACKAGE_BUSYBOX_SHOW_OTHERS=y
 #
 # tree requires a toolchain with WCHAR support
 #
-# BR2_PACKAGE_YASM is not set
 
 #
 # Games
@@ -619,6 +632,7 @@ BR2_PACKAGE_BUSYBOX_SHOW_OTHERS=y
 #
 # sshfs requires a toolchain with LARGEFILE, WCHAR, threads and dynamic library support
 #
+# BR2_PACKAGE_SUNXI_TOOLS is not set
 
 #
 # unionfs requires a toolchain with LARGEFILE, threads and dynamic library support
@@ -635,18 +649,36 @@ BR2_PACKAGE_BUSYBOX_SHOW_OTHERS=y
 #
 # Misc devices firmwares
 #
+# BR2_PACKAGE_AM33X_CM3 is not set
 # BR2_PACKAGE_B43_FIRMWARE is not set
 # BR2_PACKAGE_LINUX_FIRMWARE is not set
+# BR2_PACKAGE_RPI_FIRMWARE is not set
+# BR2_PACKAGE_SUNXI_BOARDS is not set
 # BR2_PACKAGE_UX500_FIRMWARE is not set
 # BR2_PACKAGE_ZD1211_FIRMWARE is not set
-# BR2_PACKAGE_ACPID is not set
+
+#
+# Freescale i.MX libraries
+#
+
+#
+# imx-lib needs an imx-specific kernel to be built
+#
+# BR2_PACKAGE_FIRMWARE_IMX is not set
+
+#
+# gpu-viv-bin-mx6q requires a glibc toolchain
+#
+
+#
+# a10disp requires the linux kernel
+#
 
 #
 # cdrkit requires a toolchain with LARGEFILE support
 #
 # BR2_PACKAGE_DBUS is not set
 # BR2_PACKAGE_DEVMEM2 is not set
-# BR2_PACKAGE_DMIDECODE is not set
 
 #
 # dmraid requires a toolchain with LARGEFILE support
@@ -659,7 +691,6 @@ BR2_PACKAGE_BUSYBOX_SHOW_OTHERS=y
 # BR2_PACKAGE_EEPROG is not set
 # BR2_PACKAGE_EVTEST is not set
 # BR2_PACKAGE_FAN_CTRL is not set
-# BR2_PACKAGE_FLASHROM is not set
 # BR2_PACKAGE_FCONFIG is not set
 # BR2_PACKAGE_FIS is not set
 # BR2_PACKAGE_FMTOOLS is not set
@@ -723,11 +754,18 @@ BR2_PACKAGE_BUSYBOX_SHOW_OTHERS=y
 # BR2_PACKAGE_OPENOCD is not set
 
 #
+# owl-linux requires a Linux kernel
+#
+
+#
+# owl-linux is only supported on ARM9 architecture
+#
+
+#
 # parted requires a toolchain with LARGEFILE+WCHAR support
 #
 # BR2_PACKAGE_PCIUTILS is not set
 # BR2_PACKAGE_PICOCOM is not set
-# BR2_PACKAGE_READ_EDID is not set
 # BR2_PACKAGE_RNG_TOOLS is not set
 
 #
@@ -747,7 +785,19 @@ BR2_PACKAGE_BUSYBOX_SHOW_OTHERS=y
 # BR2_PACKAGE_SNOWBALL_HDMISERVICE is not set
 # BR2_PACKAGE_SREDIRD is not set
 # BR2_PACKAGE_STATSERIAL is not set
+
+#
+# sunxi-cedarx requires an eglibc/glibc based toolchain
+#
+
+#
+# sunxi-mali requires an eglibc/glibc based toolchain
+#
 # BR2_PACKAGE_SYSSTAT is not set
+
+#
+# ti-gfx requires an eglibc/glibc based toolchain and the linux kernel
+#
 # BR2_PACKAGE_TI_UTILS is not set
 # BR2_PACKAGE_UBOOT_TOOLS is not set
 
@@ -1067,6 +1117,12 @@ BR2_PACKAGE_BUSYBOX_SHOW_OTHERS=y
 #
 # libebml requires a toolchain with C++ support
 #
+# BR2_PACKAGE_LIBFSLCODEC is not set
+# BR2_PACKAGE_LIBFSLPARSER is not set
+
+#
+# libfslvpuwrap needs an imx-specific kernel to be built
+#
 
 #
 # libmatroska requires a toolchain with C++ support
@@ -1204,6 +1260,7 @@ BR2_PACKAGE_BUSYBOX_SHOW_OTHERS=y
 #
 # Other
 #
+# BR2_PACKAGE_LIBCOFI is not set
 
 #
 # classpath requires a toolchain with IPV6 support
@@ -1234,7 +1291,6 @@ BR2_PACKAGE_BUSYBOX_SHOW_OTHERS=y
 # gtest requires a toolchain with c++, WCHAR and THREADS support
 #
 # BR2_PACKAGE_LIBATOMIC_OPS is not set
-# BR2_PACKAGE_LIBBSD is not set
 # BR2_PACKAGE_LIBCAP is not set
 # BR2_PACKAGE_LIBCAP_NG is not set
 # BR2_PACKAGE_LIBDAEMON is not set
@@ -1263,7 +1319,6 @@ BR2_PACKAGE_BUSYBOX_SHOW_OTHERS=y
 # BR2_PACKAGE_LIBSIGSEGV is not set
 # BR2_PACKAGE_LIBTASN1 is not set
 # BR2_PACKAGE_LIBTPL is not set
-# BR2_PACKAGE_LIBSECCOMP is not set
 # BR2_PACKAGE_LIBUNWIND is not set
 # BR2_PACKAGE_LIBURCU is not set
 
@@ -1592,10 +1647,6 @@ BR2_PACKAGE_BUSYBOX_SHOW_OTHERS=y
 # BR2_PACKAGE_SPICE_PROTOCOL is not set
 
 #
-# spice server depends on python (for pyparsing)
-#
-
-#
 # Squid requires a toolchain with C++ and IPv6 support enabled
 #
 # BR2_PACKAGE_STRONGSWAN is not set
@@ -1768,10 +1819,6 @@ BR2_PACKAGE_BUSYBOX_SHOW_OTHERS=y
 #
 # initramfs requires a Linux kernel to be built
 #
-
-#
-# iso image requires a Linux kernel to be built
-#
 # BR2_TARGET_ROOTFS_JFFS2 is not set
 # BR2_TARGET_ROOTFS_ROMFS is not set
 # BR2_TARGET_ROOTFS_SQUASHFS is not set
@@ -1782,9 +1829,9 @@ BR2_PACKAGE_BUSYBOX_SHOW_OTHERS=y
 # Bootloaders
 #
 # BR2_TARGET_BAREBOX is not set
-# BR2_TARGET_GRUB is not set
-# BR2_TARGET_SYSLINUX is not set
+# BR2_TARGET_MXS_BOOTLETS is not set
 # BR2_TARGET_UBOOT is not set
+# BR2_TARGET_XLOADER is not set
 
 #
 # Host utilities
@@ -1797,8 +1844,10 @@ BR2_PACKAGE_BUSYBOX_SHOW_OTHERS=y
 # BR2_PACKAGE_HOST_GENPART is not set
 # BR2_PACKAGE_HOST_LPC3250LOADER is not set
 # BR2_PACKAGE_HOST_MTOOLS is not set
+# BR2_PACKAGE_HOST_OMAP_U_BOOT_UTILS is not set
 # BR2_PACKAGE_HOST_OPENOCD is not set
 # BR2_PACKAGE_HOST_SAM_BA is not set
+# BR2_PACKAGE_HOST_SUNXI_TOOLS is not set
 # BR2_PACKAGE_HOST_UBOOT_TOOLS is not set
 
 #

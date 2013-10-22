@@ -1,8 +1,6 @@
 #!/bin/bash
-
-FOLDER=${PWD##*/}
-
+FOLDER = ${PWD##*/}
 cd ../linux-3.10.16/
 cp ../$FOLDER/config-linux .config
-make nconfig ARCH=i386
+make nconfig ARCH=arm
 cp .config ../$FOLDER/config-linux

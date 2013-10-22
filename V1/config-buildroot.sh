@@ -1,5 +1,8 @@
 #!/bin/bash
+
+FOLDER=${PWD##*/}
+
 cd ../buildroot-2013.08.1/
-cp ../V1/config-buildroot .config
+cp ../$FOLDER/config-buildroot .config
 make menuconfig
-cp .config ../V1/config-buildroot
+cp .config ../$FOLDER/config-buildroot

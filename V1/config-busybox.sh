@@ -1,5 +1,8 @@
 #!/bin/bash
+
+FOLDER=${PWD##*/}
+
 cd ../busybox-1.21.1/
-cp ../V1/config-busybox .config
+cp ../$FOLDER/config-busybox .config
 make menuconfig
-cp .config ../V1/config-busybox
+cp .config ../$FOLDER/config-busybox

@@ -1,7 +1,5 @@
 #!/bin/bash
-
-FOLDER=${PWD##*/}
-
+FOLDER = ${PWD##*/}
 rm -rf ../linux-3.10.16/usr/files
 mkdir ../linux-3.10.16/usr/files
 rm ../linux-3.10.16/usr/.initramfs_data.*
@@ -23,6 +21,6 @@ cp initramfs-homer ../linux-3.10.16/initramfsconfig
 
 cd ../linux-3.10.16/
 cp ../$FOLDER/config-linux .config
-make -j 12 ARCH=i386
+make -j 12 ARCH=arm
 cd ../$FOLDER
-qemu -kernel ../linux-3.10.16/arch/x86/boot/bzImage -append "root=/dev/ram init=/init" -curses -qmp tcp:localhost:4444,server,nowait
+qemu-system-arm -kernel ../linux-3.10.16/arch/arm/boot/bzImage -append "root=/dev/ram init=/init" -curses -qmp tcp:localhost:4444,server,nowait

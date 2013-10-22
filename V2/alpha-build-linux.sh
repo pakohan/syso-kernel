@@ -6,7 +6,7 @@ rm -rf ../linux-3.10.16/usr/initramfs
 rm ../linux-3.10.16/usr/.initramfs_data.*
 rm ../linux-3.10.16/initramfsconfig
 
-gcc -static -o ./initramfs/bin/hello init.c -m32
+arm-linux-gnueabi-gcc -static -o ./initramfs/bin/hello init.c
 
 cp -R initramfs ../linux-3.10.16/usr
 
@@ -20,14 +20,14 @@ rm initramfs/bin/hello
 
 cd ../busybox-1.21.1/
 cp ../$FOLDER/config-busybox .config
-EXTRA_CFLAGS="-m32" EXTRA_LDFLAGS="-m32" make
-make EXTRA_CFLAGS="-m32" EXTRA_LDFLAGS="-m32" CONFIG_PREFIX=../linux-3.10.16/usr/initramfs install
+CROSS_COMPILE=arm-linux-gnueabi- make
+CROSS_COMPILE=arm-linux-gnueabi- make CONFIG_PREFIX=../linux-3.10.16/usr/initramfs install
 
-cd ../linux-3.10.16/
-sh scripts/gen_initramfs_list.sh usr/initramfs/ > initramfsconfig
-cat ../$FOLDER/initramfsconfig_nodes >> initramfsconfig
+#cd ../linux-3.10.16/
+#sh scripts/gen_initramfs_list.sh usr/initramfs/ > initramfsconfig
+#cat ../$FOLDER/initramfsconfig_nodes >> initramfsconfig
 
-cp ../$FOLDER/config-linux .config
-make -j 3 ARCH=i386
-cd ../$FOLDER
-qemu -kernel ../linux-3.10.16/arch/x86/boot/bzImage -append "root=/dev/ram init=/init" -curses -qmp tcp:localhost:4444,server,nowait
+#cp ../$FOLDER/config-linux .config
+#make -j 3 ARCH=arm
+#cd ../$FOLDER
+#qemu-system-arm -kernel ../linux-3.10.16/arch/arm/boot/bzImage -append "root=/dev/ram init=/init" -curses -qmp tcp:localhost:4444,server,nowait
