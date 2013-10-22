@@ -1,7 +1,0 @@
-config BR2_PACKAGE_RAMSMP
-	bool "ramspeed/smp"
-	help
-	  RAMspeed/SMP is a free open source command line utility
-	  to measure cache and memory performance of multiprocessor machines.
-
-	  http://alasir.com/software/ramspeed/
