@@ -40,7 +40,7 @@ ${ROOTFS}:
 
 ${BUSYBOX}: ${ROOTFS} ${BUSYBOX_CONFIG}
 ifdef HOMER
-	cp /home/public/SYSO/busybox ${ROOTFS}/bin/busybox
+	cp -R /home/public/SYSO/busybox ${ROOTFS}/bin/busybox
 else
 	make -j ${JOBS} -C ../busybox-1.21.1 EXTRA_CFLAGS=${EXTRA_CFLAGS} EXTRA_LDFLAGS=${EXTRA_LDFLAGS}
 	make -C ../busybox-1.21.1 EXTRA_CFLAGS=${EXTRA_CFLAGS} EXTRA_LDFLAGS=${EXTRA_LDFLAGS} CONFIG_PREFIX=$< install
