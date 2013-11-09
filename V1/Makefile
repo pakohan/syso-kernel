@@ -15,7 +15,7 @@ BUSYBOX=../${KERNEL_VERSION}/usr/initramfs/bin/busybox
 all: ${TARGET}
 
 start: ${TARGET}
-	qemu -kernel ${TARGET} -append "root=/dev/ram init=/init" -curses -qmp tcp:localhost:4444,server,nowait
+	${QEMU} -kernel ${TARGET} -append "root=/dev/ram init=/init" -curses -qmp tcp:localhost:4444,server,nowait
 
 config-linux:
 	cp config-linux ../${KERNEL_VERSION}/.config
@@ -24,7 +24,7 @@ config-linux:
 
 config-busybox:
 	cp config-busybox ../busybox-1.21.1/.config
-	make -C ../busybox-1.21.1 defconfig
+	make -C ../busybox-1.21.1 menuconfig
 	cp ../busybox-1.21.1/.config config-busybox
 
 ${TARGET}: ${ROOTFS} ${USERPROG} ${LINUX_CONFIG} ${BUSYBOX} 
