@@ -44,7 +44,7 @@ ifdef HOMER
 	mkdir -p ${ROOTFS}/bin/
 	cp /home/public/SYSO/busybox ${ROOTFS}/bin/busybox
 else
-	make -j ${JOBS} -C ../busybox-1.21.1 EXTRA_CFLAGS=${EXTRA_CFLAGS} EXTRA_LDFLAGS=${EXTRA_LDFLAGS}
+	make -j ${JOBS} -C ../busybox-1.21.1 EXTRA_CFLAGS=${EXTRA_CFLAGS} EXTRA_LDFLAGS=${EXTRA_LDFLAGS} ARCH=${ARCH}
 	make -C ../busybox-1.21.1 EXTRA_CFLAGS=${EXTRA_CFLAGS} EXTRA_LDFLAGS=${EXTRA_LDFLAGS} CONFIG_PREFIX=$< install
 endif
 
