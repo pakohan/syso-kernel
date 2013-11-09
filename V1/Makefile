@@ -24,7 +24,7 @@ config-linux:
 
 config-busybox:
 	cp config-busybox ../busybox-1.21.1/.config
-	make -C ../busybox-1.21.1 menuconfig
+	make -C ../busybox-1.21.1 defconfig
 	cp ../busybox-1.21.1/.config config-busybox
 
 ${TARGET}: ${ROOTFS} ${USERPROG} ${LINUX_CONFIG} ${BUSYBOX} 

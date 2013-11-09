@@ -1,0 +1,6 @@
+#!/bin/ash
+
+#echo /sbin/mdev > /proc/sys/kernel/hotplug
+mdev -s
+
+exec /bin/hello
