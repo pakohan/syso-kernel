@@ -1,1 +1,4 @@
 ARCH=arm
+DEFCONFIG=vexpress_defconfig
+TARGET=../linux-3.4.68/arch/arm/boot/zImage
+KERNEL_VERSION=linux-3.4.68

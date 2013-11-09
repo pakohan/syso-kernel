@@ -1,12 +1,12 @@
 -include variables
 -include ../server.host
 
-TARGET=../linux-3.10.16/arch/${ARCH}/boot/bzImage
-USERPROG=../linux-3.10.16/usr/initramfs/bin/hello
-ROOTFS=../linux-3.10.16/usr/initramfs
-LINUX_CONFIG=../linux-3.10.16/.config
+#TARGET=../${KERNEL_VERSION}/arch/${ARCH}/boot/bzImage
+USERPROG=../${KERNEL_VERSION}/usr/initramfs/bin/hello
+ROOTFS=../${KERNEL_VERSION}/usr/initramfs
+LINUX_CONFIG=../${KERNEL_VERSION}/.config
 BUSYBOX_CONFIG=../busybox-1.21.1/.config
-BUSYBOX=../linux-3.10.16/usr/initramfs/bin/busybox
+BUSYBOX=../${KERNEL_VERSION}/usr/initramfs/bin/busybox
 
 .PHONY: all clean clean-rootfs config-linux config-busybox start
 
@@ -15,29 +15,29 @@ BUSYBOX=../linux-3.10.16/usr/initramfs/bin/busybox
 all: ${TARGET}
 
 start: ${TARGET}
-	qemu -kernel ../linux-3.10.16/arch/${ARCH}/boot/bzImage -append "root=/dev/ram init=/init" -curses -qmp tcp:localhost:4444,server,nowait
+	qemu -kernel ${TARGET} -append "root=/dev/ram init=/init" -curses -qmp tcp:localhost:4444,server,nowait
 
 config-linux:
-	cp ../V1/config-linux ../linux-3.10.16/.config
-	make -C ../linux-3.10.16 nconfig ARCH=${ARCH}
-	cp ../linux-3.10.16/.config ../V1/config-linux
+	cp config-linux ../${KERNEL_VERSION}/.config
+	make -C ../${KERNEL_VERSION} ARCH=${ARCH} ${DEFCONFIG}
+	cp ../${KERNEL_VERSION}/.config config-linux
 
 config-busybox:
-	cp ../V1/config-busybox ../busybox-1.21.1/.config
+	cp config-busybox ../busybox-1.21.1/.config
 	make -C ../busybox-1.21.1 menuconfig
-	cp ../busybox-1.21.1/.config ../V1/config-busybox
+	cp ../busybox-1.21.1/.config config-busybox
 
-${TARGET}: ${ROOTFS} ${USERPROG} ${LINUX_CONFIG} ##${BUSYBOX} 
+${TARGET}: ${ROOTFS} ${USERPROG} ${LINUX_CONFIG} ${BUSYBOX} 
 ifdef HOMER
-	cp initramfs-homer ../linux-3.10.16/initramfsconfig
+	cp initramfs-homer ../${KERNEL_VERSION}/initramfsconfig
 else
-	sh ../linux-3.10.16/scripts/gen_initramfs_list.sh ../linux-3.10.16/usr/initramfs/ > ../linux-3.10.16/initramfsconfig
-	cat initramfsconfig_nodes >> ../linux-3.10.16/initramfsconfig
+	sh ../${KERNEL_VERSION}/scripts/gen_initramfs_list.sh ../${KERNEL_VERSION}/usr/initramfs/ > ../${KERNEL_VERSION}/initramfsconfig
+	cat initramfsconfig_nodes >> ../${KERNEL_VERSION}/initramfsconfig
 endif
-	make -j ${JOBS} -C ../linux-3.10.16 ARCH=${ARCH}
+	make -j ${JOBS} -C ../${KERNEL_VERSION} ARCH=${ARCH}
 
 ${ROOTFS}:
-	cp -R ../V1/initramfs ../linux-3.10.16/usr
+	cp -R ../V1/initramfs ../${KERNEL_VERSION}/usr
 
 ${BUSYBOX}: ${ROOTFS} ${BUSYBOX_CONFIG}
 ifdef HOMER
@@ -57,15 +57,15 @@ ${BUSYBOX_CONFIG}:
 	cp config-busybox ../busybox-1.21.1/.config
 
 ${LINUX_CONFIG}:
-	cp config-linux ../linux-3.10.16/.config
+	cp config-linux ../${KERNEL_VERSION}/.config
 
 clean: clean-rootfs
-	make -j ${JOBS} -C ../linux-3.10.16 distclean
+	make -j ${JOBS} -C ../${KERNEL_VERSION} distclean
 	make -j ${JOBS} -C ../busybox-1.21.1 distclean
 	rm -rf ${USERPROG}
 	rm -rf ${ROOTFS}
 
 clean-rootfs:
-	rm -rf ../linux-3.10.16/usr/initramfs
-	rm -f ../linux-3.10.16/usr/.initramfs_data.*
-	rm -f ../linux-3.10.16/initramfsconfig
+	rm -rf ../${KERNEL_VERSION}/usr/initramfs
+	rm -f ../${KERNEL_VERSION}/usr/.initramfs_data.*
+	rm -f ../${KERNEL_VERSION}/initramfsconfig
