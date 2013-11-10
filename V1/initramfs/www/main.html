@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>System Interface</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript">
+    function myFunction() {
+        $.post('cgi-bin/hostname.sh', function(data) {
+            $('#output').html(data);
+        });
+    }
+    </script>
+</head>
+<body class="container">
+    <h1>Hello, world!</h1>
+    <button class="btn" onclick="myFunction()">Push</button>
+    <hr>
+    <div id="output"></div>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="bootstrap.min.js"></script>
+</body>
+</html>
