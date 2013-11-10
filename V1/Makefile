@@ -56,7 +56,7 @@ endif
 
 ${USERPROG}: ${ROOTFS} init.c
 	mkdir -p ${ROOTFS}/bin/
-	gcc -static ${EXTRA_CFLAGS} init.c -o $@
+	${CROSS_COMPILE}gcc -static ${EXTRA_CFLAGS} init.c -o $@
 
 ${BUSYBOX_CONFIG}:
 	cp config-busybox ../busybox-1.21.1/.config
