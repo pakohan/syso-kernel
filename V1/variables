@@ -3,4 +3,4 @@ EXTRA_CFLAGS="-m32"
 EXTRA_LDFLAGS="-m32"
 TARGET=../linux-3.10.16/arch/i386/boot/bzImage
 KERNEL_VERSION=linux-3.10.16
-DEFCONFIG=nconfig
+DEFCONFIG=defconfig

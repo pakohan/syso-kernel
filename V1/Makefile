@@ -19,13 +19,18 @@ start: ${TARGET}
 
 config-linux:
 	cp config-linux ../${KERNEL_VERSION}/.config
-	make -C ../${KERNEL_VERSION} ARCH=${ARCH} ${DEFCONFIG}
+	make -C ../${KERNEL_VERSION} ARCH=${ARCH} nconfig
 	cp ../${KERNEL_VERSION}/.config config-linux
 
 config-busybox:
 	cp config-busybox ../busybox-1.21.1/.config
 	make -C ../busybox-1.21.1 menuconfig
 	cp ../busybox-1.21.1/.config config-busybox
+
+defconfig-linux:
+	cp config-linux ../${KERNEL_VERSION}/.config
+	make -C ../${KERNEL_VERSION} ARCH=${ARCH} ${DEFCONFIG}
+	cp ../${KERNEL_VERSION}/.config config-linux
 
 ${TARGET}: ${ROOTFS} ${USERPROG} ${LINUX_CONFIG} ${BUSYBOX} 
 ifdef HOMER

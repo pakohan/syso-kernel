@@ -1,6 +1,6 @@
 ARCH=arm
-DEFCONFIG=vexpress_defconfig
 TARGET=../linux-3.4.68/arch/arm/boot/zImage
 KERNEL_VERSION=linux-3.4.68
 QEMU=qemu-system-arm -M vexpress-a9
 CROSS_COMPILE=arm-linux-gnueabi-
+DEFCONFIG=vexpress_defconfig
