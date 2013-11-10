@@ -34,7 +34,7 @@ else
 	sh ../${KERNEL_VERSION}/scripts/gen_initramfs_list.sh ../${KERNEL_VERSION}/usr/initramfs/ > ../${KERNEL_VERSION}/initramfsconfig
 	cat initramfsconfig_nodes >> ../${KERNEL_VERSION}/initramfsconfig
 endif
-	make -j ${JOBS} -C ../${KERNEL_VERSION} ARCH=${ARCH}
+	make -j ${JOBS} -C ../${KERNEL_VERSION} ARCH=${ARCH} CROSS_COMPILE=${CROSS_COMPILE}
 
 ${ROOTFS}:
 	cp -R ../V1/initramfs ../${KERNEL_VERSION}/usr
