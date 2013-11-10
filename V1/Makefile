@@ -15,7 +15,7 @@ BUSYBOX=../${KERNEL_VERSION}/usr/initramfs/bin/busybox
 all: ${TARGET}
 
 start: ${TARGET}
-	${QEMU} -kernel ${TARGET} -qmp tcp:localhost:4444,server,nowait
+	${QEMU} -kernel ${TARGET} -qmp tcp:localhost:25565,server,nowait
 
 config-linux:
 	cp config-linux ../${KERNEL_VERSION}/.config
