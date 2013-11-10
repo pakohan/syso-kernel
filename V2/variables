@@ -1,6 +1,6 @@
 ARCH=arm
 TARGET=../linux-3.4.68/arch/arm/boot/zImage
 KERNEL_VERSION=linux-3.4.68
-QEMU=qemu-system-arm -M vexpress-a9
+QEMU=qemu-system-arm -M vexpress-a9 -net nic,macaddr=00:00:00:12:00:0b -net vde,sock=/tmp/vde2-tap0.ctl -net nic,model=lan9118 -append "root=/dev/ram init=/init console=tty1"
 CROSS_COMPILE=arm-linux-gnueabi-
 DEFCONFIG=vexpress_defconfig
