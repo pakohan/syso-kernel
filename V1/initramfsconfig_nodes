@@ -1,2 +1,3 @@
+dir /dev 755 1000 1000
 nod /dev/console 644 0 0 c 5 1
 slink /init ../bin/busybox 777 1000 1000
