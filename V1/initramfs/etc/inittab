@@ -2,6 +2,9 @@
 ::sysinit:/bin/mount -t sysfs none /sys
 ::sysinit:/bin/mount -t tmpfs none /tmp
 ::sysinit:loadkmap < /etc/de.map
+::sysinit:ifconfig lo up
+::sysinit:ifconfig eth0 up
+::sysinit:udhcpc -i eth0 -s /etc/udhcpc/sample.script
 #::sysinit:/bin/mount -t devtmpfs none /dev
 ::sysinit:/bin/ash /etc/init.d/rcS
 ::respawn:-/bin/ash
