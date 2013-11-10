@@ -14,10 +14,13 @@
 </head>
 <body class="container">
     <h1>Hello, world!</h1>
-    <button class="btn" onclick="info('hostname')">Hostname</button>
-    <button class="btn" onclick="info('cpuinfo')">CPUinfo</button>
-    <button class="btn" onclick="info('uptime')">Uptime</button>
-    <button class="btn" onclick="info('network')">Network</button>
+    <div class="btn-group">
+        <button class="btn btn-primary" onclick="info('hostname')">Hostname</button>
+        <button class="btn btn-primary" onclick="info('cpuinfo')">CPUinfo</button>
+        <button class="btn btn-primary" onclick="info('uptime')">Uptime</button>
+        <button class="btn btn-primary" onclick="info('network')">Network</button>
+        <button class="btn btn-primary" onclick="info('cleartmp')">Clear /tmp</button>
+    </div>
     <hr>
     <div id="output" class="well"></div>
     <script src="https://code.jquery.com/jquery.js"></script>

@@ -1,5 +1,5 @@
 #!/bin/sh
 echo "Content-type: text/html"
 echo ""
-echo "<h2>CPUInfo</h2>"
+echo "<h2>Network</h2>"
 ifconfig | sed 's/.$/<br>/g'
