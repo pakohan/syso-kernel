@@ -1,0 +1,15 @@
+::sysinit:/bin/mount -t proc proc /proc
+::sysinit:/bin/mount -t sysfs none /sys
+::sysinit:/bin/mount -t tmpfs none /tmp
+::sysinit:loadkmap < /etc/de.map
+::sysinit:ifconfig lo up
+::sysinit:ifconfig eth0 up
+::sysinit:udhcpc -i eth0 -s /etc/udhcpc/sample.script
+::sysinit:httpd -h /www/
+#::sysinit:/bin/mount -t devtmpfs none /dev
+::sysinit:/bin/ash /etc/init.d/rcS
+::respawn:-/bin/ash
+::restart:/sbin/init
+::ctrlaltdel:/sbin/reboot
+::shutdown:/bin/umount -a -r
+::shutdown:/sbin/swapoff -a
