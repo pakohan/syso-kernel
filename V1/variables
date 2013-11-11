@@ -3,6 +3,7 @@ CROSS_COMPILE=
 DEFCONFIG=defconfig
 EXTRA_CFLAGS="-m32"
 EXTRA_LDFLAGS="-m32"
+HOMER2=y
 KERNEL_VERSION=linux-3.10.16
-QEMU=qemu -append "root=/dev/ram init=/init console=tty1" 
+QEMU=qemu -curses -append "root=/dev/ram init=/init console=tty1" 
 TARGET=../linux-3.10.16/arch/i386/boot/bzImage

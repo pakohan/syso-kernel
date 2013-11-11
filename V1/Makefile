@@ -33,7 +33,7 @@ defconfig-linux:
 	cp ../${KERNEL_VERSION}/.config config-linux
 
 ${TARGET}: ${ROOTFS} ${USERPROG} ${LINUX_CONFIG} ${BUSYBOX} 
-ifdef HOMER
+ifeq ($(call ifndef_any_of,HOMER1 HOMER2),)
 	cp initramfs-homer ../${KERNEL_VERSION}/initramfsconfig
 else
 	sh ../${KERNEL_VERSION}/scripts/gen_initramfs_list.sh ../${KERNEL_VERSION}/usr/initramfs/ > ../${KERNEL_VERSION}/initramfsconfig
@@ -45,7 +45,7 @@ ${ROOTFS}:
 	cp -R ../V1/initramfs ../${KERNEL_VERSION}/usr
 
 ${BUSYBOX}: ${ROOTFS} ${BUSYBOX_CONFIG}
-ifdef HOMER
+ifeq ($(call ifndef_any_of,HOMER1 HOMER2),)
 	mkdir -p ${ROOTFS}/bin/
 	cp /home/public/SYSO/busybox ${ROOTFS}/bin/busybox
 else
@@ -57,7 +57,6 @@ endif
 ${USERPROG}: ${ROOTFS} init.c
 	mkdir -p ${ROOTFS}/bin/
 	${CROSS_COMPILE}gcc -s -static ${EXTRA_CFLAGS} init.c -o $@
-	#strip $@
 
 ${BUSYBOX_CONFIG}:
 	cp config-busybox ../busybox-1.21.1/.config
