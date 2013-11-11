@@ -1,7 +1,8 @@
 ARCH=i386
+CROSS_COMPILE=
+DEFCONFIG=defconfig
 EXTRA_CFLAGS="-m32"
 EXTRA_LDFLAGS="-m32"
-TARGET=../linux-3.10.16/arch/i386/boot/bzImage
 KERNEL_VERSION=linux-3.10.16
-DEFCONFIG=defconfig
-QEMU=-append "root=/dev/ram init=/init console=tty1" 
+QEMU=qemu -append "root=/dev/ram init=/init console=tty1" 
+TARGET=../linux-3.10.16/arch/i386/boot/bzImage
