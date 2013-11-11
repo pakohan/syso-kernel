@@ -33,8 +33,13 @@ defconfig-linux:
 	cp ../${KERNEL_VERSION}/.config config-linux
 
 ${TARGET}: ${ROOTFS} ${USERPROG} ${LINUX_CONFIG} ${BUSYBOX} 
-ifeq ($(call ifndef_any_of,HOMER1 HOMER2),)
+ifeq (${ARCH},i386)
+ifdef HOMER
 	cp initramfs-homer ../${KERNEL_VERSION}/initramfsconfig
+else
+        sh ../${KERNEL_VERSION}/scripts/gen_initramfs_list.sh ../${KERNEL_VERSION}/usr/initramfs/ > ../${KERNEL_VERSION}/initramfsconfig
+        cat initramfsconfig_nodes >> ../${KERNEL_VERSION}/initramfsconfig
+endif
 else
 	sh ../${KERNEL_VERSION}/scripts/gen_initramfs_list.sh ../${KERNEL_VERSION}/usr/initramfs/ > ../${KERNEL_VERSION}/initramfsconfig
 	cat initramfsconfig_nodes >> ../${KERNEL_VERSION}/initramfsconfig
@@ -45,9 +50,14 @@ ${ROOTFS}:
 	cp -R ../V1/initramfs ../${KERNEL_VERSION}/usr
 
 ${BUSYBOX}: ${ROOTFS} ${BUSYBOX_CONFIG}
-ifeq ($(call ifndef_any_of,HOMER1 HOMER2),)
+ifeq (${ARCH},i386)
+ifdef HOMER
 	mkdir -p ${ROOTFS}/bin/
 	cp /home/public/SYSO/busybox ${ROOTFS}/bin/busybox
+else
+        make -j ${JOBS} -C ../busybox-1.21.1 EXTRA_CFLAGS=${EXTRA_CFLAGS} EXTRA_LDFLAGS=${EXTRA_LDFLAGS} ARCH=${ARCH}
+        make -C ../busybox-1.21.1 EXTRA_CFLAGS=${EXTRA_CFLAGS} EXTRA_LDFLAGS=${EXTRA_LDFLAGS} CONFIG_PREFIX=$< install
+endif
 else
 	make -j ${JOBS} -C ../busybox-1.21.1 EXTRA_CFLAGS=${EXTRA_CFLAGS} EXTRA_LDFLAGS=${EXTRA_LDFLAGS} ARCH=${ARCH}
 	make -C ../busybox-1.21.1 EXTRA_CFLAGS=${EXTRA_CFLAGS} EXTRA_LDFLAGS=${EXTRA_LDFLAGS} CONFIG_PREFIX=$< install
