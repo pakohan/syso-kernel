@@ -47,7 +47,7 @@ endif
 	make -j ${JOBS} -C ../${KERNEL_VERSION} ARCH=${ARCH} CROSS_COMPILE=${CROSS_COMPILE}
 
 ${ROOTFS}:
-	cp -R ../V1/initramfs ../${KERNEL_VERSION}/usr
+	cp -R initramfs ../${KERNEL_VERSION}/usr
 
 ${BUSYBOX}: ${ROOTFS} ${BUSYBOX_CONFIG}
 ifeq (${ARCH},i386)
