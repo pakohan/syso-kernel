@@ -4,5 +4,5 @@ DEFCONFIG=vexpress_defconfig
 EXTRA_CFLAGS=
 EXTRA_LDFLAGS=
 KERNEL_VERSION=linux-3.4.68
-QEMU=qemu-system-arm -M vexpress-a9 -net nic,model=lan9118,macaddr=00:00:00:00:00:A4 -net vde,sock=/tmp/vde2-tap0.ctl -append "root=/dev/ram init=/init console=tty1"
+QEMU=qemu-system-arm -k /usr/share/qemu/keymaps/de -M vexpress-a9 -net nic,model=lan9118,macaddr=00:00:00:00:00:A4 -net vde,sock=/tmp/vde2-tap0.ctl -append "root=/dev/ram init=/init console=tty1"
 TARGET=../linux-3.4.68/arch/arm/boot/zImage
